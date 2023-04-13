@@ -1,0 +1,6 @@
+priority:
+  url: "https://touchstone.medatecherp.co.uk/odata/Priority/tabula.ini/"
+  company: "live"
+  userID: "apiuser"
+  password: "apiuser"
+  url3rdpary: "https://random-data-api.com/api/v2/"

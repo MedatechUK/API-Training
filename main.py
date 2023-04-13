@@ -116,8 +116,12 @@ print(inptdict)
 vinputURL = vurl + vcompany
 v3rdpartyURL = data['priority']['url3rdpary']
 
+@app.route("/API-Training", methods=["GET"])
+def hello():
+    return "Hello world"
 
-@app.route("/order", methods=["POST"])
+
+@app.route("/API-Training/order", methods=["POST"])
 def order_info():
     # print(request.get_json())  # print json to console
     jpayload = request.get_json()

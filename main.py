@@ -2,6 +2,9 @@ import yaml
 import requests
 from flask import Flask, request
 import json
+import logging
+import numpy
+
 
 app = Flask(__name__)
 
@@ -117,9 +120,10 @@ vinputURL = vurl + vcompany
 v3rdpartyURL = data['priority']['url3rdpary']
 
 
+# API-Training is the repositiry name for this project.
 @app.route("/API-Training", methods=["GET"])
 def hello():
-    return "Hello world"
+    return "Hello world Hello"
 
 
 @app.route("/API-Training/hello2", methods=["GET"])
@@ -127,6 +131,7 @@ def hello2():
     return "Hello world how are you"
 
 
+# 3rd party client posting the value to Priority
 @app.route("/API-Training/order", methods=["POST"])
 def order_info():
     # print(request.get_json())  # print json to console
@@ -135,13 +140,12 @@ def order_info():
 
     # return request.get_json()  # return back to json
 
-    # process the data in priority format.
-
     # repsonse = requests.post(vinputURL, auth=(uid, pwd), json=jsoninput)
     # print(response.json())
 
     # del jpayload["uid"]
     # del jpayload["brand"]
+    # process the data in priority format.
     jpayload.pop("uid")
     jpayload.pop("brand")  # delete the whole key and value
     # delete the key and update the existing Value with new key

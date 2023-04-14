@@ -123,7 +123,7 @@ v3rdpartyURL = data['priority']['url3rdpary']
 # API-Training is the repositiry name for this project.
 @app.route("/API-Training", methods=["GET"])
 def hello():
-    return "Hello world Hello"
+    return "Hello world Hello Hello"
 
 
 @app.route("/API-Training/hello2", methods=["GET"])

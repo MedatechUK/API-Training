@@ -132,30 +132,37 @@ def hello2():
 
 
 # 3rd party client posting the value to Priority
-@app.route("/API-Training/order", methods=["POST"])
+@app.route("/API-Training/order", methods=["GET", "POST"])
 def order_info():
-    # print(request.get_json())  # print json to console
+    print(request.get_json())  # print json to console
     jpayload = request.get_json()
+    print("input json")
     print(jpayload)
+    print(request.method)
+    if request.method == "POST":
 
-    # return request.get_json()  # return back to json
+        # return request.get_json()  # return back to json
 
-    # repsonse = requests.post(vinputURL, auth=(uid, pwd), json=jsoninput)
-    # print(response.json())
+        # repsonse = requests.post(vinputURL, auth=(uid, pwd), json=jsoninput)
+        # print(response.json())
 
-    # del jpayload["uid"]
-    # del jpayload["brand"]
-    # process the data in priority format.
-    jpayload.pop("uid")
-    jpayload.pop("brand")  # delete the whole key and value
-    # delete the key and update the existing Value with new key
-    jpayload["PARTNAME"] = str(jpayload.pop("id"))
-    jpayload["PARTDES"] = jpayload.pop("equipment")
-    print(jpayload)
+        # del jpayload["uid"]
+        # del jpayload["brand"]
+        # process the data in priority format.
+        jpayload.pop("uid")
+        jpayload.pop("brand")  # delete the whole key and value
+        # delete the key and update the existing Value with new key
+        jpayload["PARTNAME"] = str(jpayload.pop("id"))
+        jpayload["PARTDES"] = jpayload.pop("equipment")
+        print(jpayload)
 
-    response = requests.post(f"{vinputURL}/LOGPART",
-                             auth=(uid, pwd), json=jpayload)
-    return response.json()
+        response = requests.post(f"{vinputURL}/LOGPART",
+                                 auth=(uid, pwd), json=jpayload)
+        print(response.json())  # print output JSON to Terminal
+        return response.json()
+        print("aftr return")
+    else:
+        return "Get method"
 
 
 if __name__ == "__main__":
